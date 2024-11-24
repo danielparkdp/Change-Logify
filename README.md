@@ -1,2 +1,2 @@
-# Changelogs
-AI Powered Changelogs for Devs
+# Logify
+AI Powered Changelogs generator for Devs!
