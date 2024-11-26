@@ -156,7 +156,7 @@ const logify = async (options) => {
         process.stdout.write(publishMessage[i]);
         await new Promise(resolve => setTimeout(resolve, 10));
     }
-    console.log("\x1b[1mSuccess! To undo log, run \x1b[3mlogify revert\x1b[0m\x1b[1m.\x1b[0m")
+    console.log("\x1b[1m\nSuccess! To undo log, run \x1b[3mlogify revert\x1b[0m\x1b[1m.\x1b[0m")
 
 };
 
