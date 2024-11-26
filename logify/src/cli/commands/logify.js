@@ -117,10 +117,10 @@ const logify = async (options) => {
             'Content-Type': 'application/json'
         };
         const data = {"contents": [{"parts": [{"text": prompt}]}]};
-        const model = "gemini-1.5-flash"
+        const model = "gemini-1.5-pro"
         const response = await axios.post(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`, data, { headers });
         const gptResponse = response.data;
-        llm_response = (gptResponse.candidates[0].content.parts[0].text);
+        llm_response = (gptResponse.candidates[0].content.parts[0].text).trim();
     } else {
         API_KEY = process.env.OPENAI_API_KEY;
         const prompt = summarize_short(remadeGitLog);
@@ -139,7 +139,7 @@ const logify = async (options) => {
         };
         const response = await axios.post('https://api.openai.com/v1/chat/completions', data, { headers });
         const gptResponse = response.data;
-        llm_response = (gptResponse.choices[0].message.content);
+        llm_response = (gptResponse.choices[0].message.content).trim();
     }
 
     const newEntry = {
