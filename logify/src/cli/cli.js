@@ -3,6 +3,7 @@
 const { Command } = require('commander');
 const program = new Command();
 const logify = require("./commands/logify");
+const init = require("./commands/init");
 
 // Default logify behavior
 program
@@ -15,7 +16,7 @@ program
     logify(options);
   });
 
-// Define diff with live
+// Define diff with another branch
 program
   .command('diff')
   .description('Diff with live')
@@ -23,21 +24,14 @@ program
     console.log('TODO: Diffing!');
   });
 
-// Define pulling from live and update
+// Define init
 program
-  .command('pull')
-  .description('Pull from live')
+  .command('init')
+  .description('Initiate logify in repo')
   .action(() => {
-    console.log('TODO: Pulling!');
+    init()
   });
 
-// Define pushing to live and generate default page
-program
-.command('push')
-.description('Push to live')
-.action(() => {
-  console.log('TODO: Pushing and default page!');
-});
 
 
 program.parse(process.argv);
