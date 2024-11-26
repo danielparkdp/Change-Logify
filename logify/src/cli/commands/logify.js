@@ -41,7 +41,7 @@ const logify = async (options) => {
     try {
         logifyJsonContent = require(logifyJsonPath);
     } catch (error) {
-        console.error('\x1b[31mFailed to read logify.json file\x1b[0m');
+        console.error('\x1b[31mFailed to read logify.json file. Ensure logify is set up with \x1b[1m\x1b[3mlogify init\x1b[0m\x1b[0m');
         return;
     }
     const logifyMap = logifyJsonContent.changelogs;
@@ -88,22 +88,25 @@ const logify = async (options) => {
 
 
     // Get versions
-    const latestVersion = logifyMap[logifyMap.length - 1].version;
     let newVersion;
-    if (options.release) {
-        const releaseFormat = /^(v?\d+\.\d+\.\d+)$/;
-        if (!releaseFormat.test(options.release)) {
-            console.error('\x1b[31mInvalid release format. Please follow standard release formating (ex. v0.0.1)\x1b[0m');
-            return;
-        }
-        if (options.release.startsWith('v')) {
-            options.release = options.release.slice(1);
-        }
-        newVersion = `v${options.release}`;
+    if (logifyMap.length === 0){
+        newVersion = "v0.0.1"
     } else {
-        newVersion = `${latestVersion.split('.')[0]}.${latestVersion.split('.')[1]}.${parseInt(latestVersion.split('.')[2], 10) + 1}`;
+        const latestVersion = logifyMap[logifyMap.length - 1].version;
+        if (options.release) {
+            const releaseFormat = /^(v?\d+\.\d+\.\d+)$/;
+            if (!releaseFormat.test(options.release)) {
+                console.error('\x1b[31mInvalid release format. Please follow standard release formating (ex. v0.0.1)\x1b[0m');
+                return;
+            }
+            if (options.release.startsWith('v')) {
+                options.release = options.release.slice(1);
+            }
+            newVersion = `v${options.release}`;
+        } else {
+            newVersion = `${latestVersion.split('.')[0]}.${latestVersion.split('.')[1]}.${parseInt(latestVersion.split('.')[2], 10) + 1}`;
+        }
     }
-    
 
     // AI Summary
     let llm_response;
@@ -151,12 +154,12 @@ const logify = async (options) => {
 
     fs.writeFileSync(logifyJsonPath, JSON.stringify(logifyJson, null, 2));
 
-    const publishMessage = `\x1b[1m${newVersion} published:\x1b[0m\n${llm_response}`;
+    const publishMessage = `\x1b[1m${newVersion} published:\x1b[0m\n\n${llm_response}`;
     for (let i = 0; i < publishMessage.length; i++) {
         process.stdout.write(publishMessage[i]);
         await new Promise(resolve => setTimeout(resolve, 10));
     }
-    console.log("\x1b[1m\nSuccess! To undo log, run \x1b[3mlogify revert\x1b[0m\x1b[1m.\x1b[0m")
+    console.log("\x1b[1m\n\nSuccess! To undo log, run \x1b[3mlogify revert\x1b[0m\x1b[1m.\x1b[0m")
 
 };
 

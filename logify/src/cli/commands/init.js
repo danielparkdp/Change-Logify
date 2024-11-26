@@ -102,6 +102,16 @@ const init = async () => {
     const logifyConfigContent = `LOGIFY_PATH=${logify_path}`;
     try {
         fs.writeFileSync(logifyConfigPath, logifyConfigContent);
+
+        const logifyJsonPath = path.join(logifyDir, 'logify', 'logify.json');
+        const logifyJsonContent = `{"changelogs":[]}`;
+        try {
+            fs.writeFileSync(logifyJsonPath, logifyJsonContent);
+        } catch (error) {
+            console.error('\x1b[31mFailed to write to logify.json file:');
+            return;
+        }
+
         console.log('\x1b[32mSuccess! Changelogs to be stored in: ' + logifyDir + '/logify\x1b[0m');
     } catch (error) {
         console.error('\x1b[31mFailed to write to .logify file:\x1b[0m');
