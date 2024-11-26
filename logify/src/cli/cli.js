@@ -10,18 +10,35 @@ program
   .description('Logify is an AI-powered changelog generation tool!')
   .option('-l, --list <names...>', 'Specify a list of commits to include', [])
   .option('-s, --select', 'Select which commits to include')
+  .option('-r, --release <version>', 'Release version, default increments latest patch')
   .option('-o, --openai', 'Use OpenAI Key', false)
   .option('-g, --google', 'Use Google Gemini Key', false)
   .action((options) => {
     logify(options);
   });
 
-// Define diff with another branch
+// Revert last change
 program
-  .command('diff')
-  .description('Diff with live')
+  .command('revert')
+  .description('Revert last changelog')
   .action(() => {
-    console.log('TODO: Diffing!');
+    console.log('TODO: Reverting!');
+  });
+
+// Revert last change
+program
+  .command('edit')
+  .description('Edit specified changelog')
+  .action(() => {
+    console.log('TODO: Editing!');
+  });
+
+// Define log
+program
+  .command('log')
+  .description('List recent versions published')
+  .action(() => {
+    console.log('TODO: LOGGING')
   });
 
 // Define init

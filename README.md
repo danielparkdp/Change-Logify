@@ -2,7 +2,7 @@
 AI Powered Changelogs generator for Devs!
 
 Ideas:
-Leverage the power of git, intuitive for devs
+Leverage the power of git/github for source of truth, intuitive for devs
 
 Use 
 `git log --oneline --no-decorate`
@@ -25,4 +25,6 @@ Paste in:
 
 Run
 `npm install -g ./logify`
+
+Can run with select, specify, etc.
 
