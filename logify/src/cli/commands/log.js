@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const readline = require('readline');
 
-const log = async (options) => {
+const log = async () => {
     // Get commit history
     let rootDir;
     try {

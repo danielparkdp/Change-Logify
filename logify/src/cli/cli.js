@@ -5,7 +5,8 @@ const program = new Command();
 const logify = require("./commands/logify");
 const init = require("./commands/init");
 const revert = require("./commands/revert");
-const log = require("./commands/log")
+const edit = require("./commands/edit");
+const log = require("./commands/log");
 
 // Default logify behavior
 program
@@ -39,9 +40,11 @@ program
 // Edit change
 program
   .command('edit')
-  .description('Edit specified changelog')
-  .action(() => {
-    console.log('TODO: Editing!');
+  .description('Edit specified or latest changelog')
+  .option('-p, --patch <patch>', 'Specify patch to edit')
+  .option('-n, --nano', 'Use Nano editor')
+  .action((options) => {
+    edit(options)
   });
 
 // Define log
