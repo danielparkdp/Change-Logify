@@ -54,7 +54,7 @@ const log = async (options) => {
         });
         index += 5;
         if (index < logifyMap.length) {
-            rl.question('Press Enter to load more logs or Esc to exit...', (answer) => {
+            rl.question('Press Enter to load more or Esc to exit...', (answer) => {
                 if (answer === '') {
                     displayLogs();
                 } else {
