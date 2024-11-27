@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const readline = require('readline');
 
-const log = async () => {
+const log = async (options) => {
     // Get commit history
     let rootDir;
     try {
@@ -28,13 +28,17 @@ const log = async () => {
         console.error('\x1b[31mFailed to read logify.json file. Ensure logify is set up with \x1b[1m\x1b[3mlogify init\x1b[0m\x1b[0m');
         return;
     }
-    const logifyMap = logifyJsonContent.changelogs;
+    let logifyMap = logifyJsonContent.changelogs;
     let latestVersion;
     if (logifyMap.length > 0) {
         latestVersion = logifyMap[logifyMap.length - 1].version;
     } else {
         console.error('\x1b[31mNo logify history!\x1b[0m');
         return;
+    }
+
+    if (options.patch && options.patch.length > 0) {
+        logifyMap = logifyMap.filter(changelog => options.patch.includes(changelog.version));
     }
 
     const rl = readline.createInterface({

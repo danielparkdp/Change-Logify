@@ -40,9 +40,9 @@ program
 // Edit change
 program
   .command('edit')
-  .description('Edit specified or latest changelog')
+  .description('View and edit specified or latest changelog')
   .option('-p, --patch <patch>', 'Specify patch to edit')
-  .option('-n, --nano', 'Use Nano editor')
+  .option('-n, --nano', 'Use Nano editor (bleh)')
   .action((options) => {
     edit(options)
   });
@@ -51,8 +51,9 @@ program
 program
   .command('log')
   .description('List recent versions published')
-  .action(() => {
-    log()
+  .option('-p, --patch <patches...>', 'Specify patches to log')
+  .action((options) => {
+    log(options)
   });
 
 
