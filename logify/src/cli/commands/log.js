@@ -1,8 +1,9 @@
 const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
+const readline = require('readline');
 
-const revert = async (options) => {
+const log = async (options) => {
     // Get commit history
     let rootDir;
     try {
@@ -32,31 +33,42 @@ const revert = async (options) => {
     if (logifyMap.length > 0) {
         latestVersion = logifyMap[logifyMap.length - 1].version;
     } else {
-        console.error('\x1b[31mNo versions to revert!\x1b[0m');
+        console.error('\x1b[31mNo logify history!\x1b[0m');
         return;
     }
 
-    let versionsToRemove = [];
-    if (options.patch && options.patch.length > 0) {
-        const releaseFormat = /^(v?\d+\.\d+\.\d+)$/;
-        options.patch.forEach(release => {
-            if (!releaseFormat.test(release)) {
-                console.error('\x1b[31mInvalid release format. Please follow standard release formating (ex. v0.0.1)\x1b[0m');
-                return;
-            }
-            if (release.startsWith('v')) {
-                release = release.slice(1);
-            }
-            versionsToRemove.push(`v${release}`);
-        });
-    } else {
-        versionsToRemove.push(latestVersion);
-    }
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
 
-    logifyJsonContent.changelogs = logifyJsonContent.changelogs.filter(changelog => !versionsToRemove.includes(changelog.version));
-    fs.writeFileSync(logifyJsonPath, JSON.stringify(logifyJsonContent, null, 2));
-    console.log(`\x1b[32mSuccessfully reverted patch \x1b[1m${versionsToRemove.join(' ')}\x1b[0m\x1b[32m!\x1b[0m`);
+    let index = 0;
+
+    const displayLogs = () => {
+        const logsToShow = logifyMap.slice(index, index + 5);
+        logsToShow.forEach(changelog => {
+            console.log(`\x1b[1mVersion: ${changelog.version}\x1b[0m`);
+            console.log(`\x1b[1mTimestamp: ${changelog.timestamp}\x1b[0m`);
+            console.log(changelog.log);
+            console.log('__________\n');
+        });
+        index += 5;
+        if (index < logifyMap.length) {
+            rl.question('Press Enter to load more logs or Esc to exit...', (answer) => {
+                if (answer === '') {
+                    displayLogs();
+                } else {
+                    rl.close();
+                }
+            });
+        } else {
+            console.log('No more logs to display.');
+            rl.close();
+        }
+    };
+
+    displayLogs();
 }
 
-module.exports = revert;
+module.exports = log;
 

@@ -1,0 +1,43 @@
+{
+  "changelogs": [
+    {
+      "version": "v0.0.1",
+      "timestamp": "2024-11-26T19:28:57.594Z",
+      "commits": [
+        "e47dea6",
+        "b956eec",
+        "7f21d8f",
+        "6b43915",
+        "12cefe4",
+        "ea0eb6c",
+        "d21bc16",
+        "0b75b4f"
+      ],
+      "log": "Standardized prompt and improved log generation features.\n\n- Updated prompt format to a standardized style.\n- Enhanced prompt accuracy for LLM (large language model) interactions.\n- Implemented working log generation functionality in Logify.\n- Introduced `logify init` command for initial setup.\n- Completed LLM summary feature integration."
+    },
+    {
+      "version": "v0.1.0",
+      "timestamp": "2024-11-26T19:31:53.205Z",
+      "commits": [
+        "505aff1"
+      ],
+      "log": "Logify Initialization Bug Fix\n\n- Fixed a bug that prevented logify from initializing correctly."
+    },
+    {
+      "version": "v0.1.1",
+      "timestamp": "2024-11-27T03:31:36.898Z",
+      "commits": [
+        "4da6abc"
+      ],
+      "log": "Update logify LLM logic\n\n- Improved logic for logify functionality to enhance performance.\n- Optimized data processing to reduce latency in generating logs.\n- Fixed bugs related to previous log generation inconsistencies."
+    },
+    {
+      "version": "v0.1.2",
+      "timestamp": "2024-11-27T04:06:07.478Z",
+      "commits": [
+        "e3041f4"
+      ],
+      "log": "Changelog Revert\n\n- Reverted recent changes to the changelog that may affect version tracking.\n- Restored previous entries or states within the changelog for accurate history."
+    }
+  ]
+}

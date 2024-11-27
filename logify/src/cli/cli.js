@@ -5,6 +5,7 @@ const program = new Command();
 const logify = require("./commands/logify");
 const init = require("./commands/init");
 const revert = require("./commands/revert");
+const log = require("./commands/log")
 
 // Default logify behavior
 program
@@ -32,7 +33,6 @@ program
   .description('Revert last changelog')
   .option('-p, --patch <patches...>', 'Specify patches to revert')
   .action(options => {
-    console.log(options)
     revert(options);
   });
 
@@ -49,7 +49,7 @@ program
   .command('log')
   .description('List recent versions published')
   .action(() => {
-    console.log('TODO: LOGGING')
+    log()
   });
 
 
