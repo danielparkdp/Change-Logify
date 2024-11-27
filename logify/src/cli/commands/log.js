@@ -43,18 +43,31 @@ const log = async (options) => {
     });
 
     let index = 0;
+    let difference = 3
+
+    logifyMap.reverse();
 
     const displayLogs = () => {
-        const logsToShow = logifyMap.slice(index, index + 5);
+        const logsToShow = logifyMap.slice(index, index + difference);
         logsToShow.forEach(changelog => {
-            console.log(`\x1b[1mVersion: ${changelog.version}\x1b[0m`);
-            console.log(`\x1b[1mTimestamp: ${changelog.timestamp}\x1b[0m`);
-            console.log(changelog.log);
-            console.log('__________\n');
+            const printWithDelay = (text) => {
+                for (let i = 0; i < text.length; i++) {
+                    process.stdout.write(text[i]);
+                    const waitTimeMs = 3;
+                    const start = new Date().getTime();
+                    while (new Date().getTime() < start + waitTimeMs);
+                }
+                console.log();
+            };
+
+            printWithDelay(`\x1b[1mVersion: ${changelog.version}\x1b[0m`);
+            printWithDelay(`\x1b[1mTimestamp: ${changelog.timestamp}\x1b[0m`);
+            printWithDelay(changelog.log);
+            printWithDelay('__________\n');
         });
-        index += 5;
+        index += difference;
         if (index < logifyMap.length) {
-            rl.question('Press Enter to load more or Esc to exit...', (answer) => {
+            rl.question('\x1b[3mPress Enter to load more or Ctrl+C to exit...\x1b[0m\n', (answer) => {
                 if (answer === '') {
                     displayLogs();
                 } else {
@@ -62,10 +75,15 @@ const log = async (options) => {
                 }
             });
         } else {
-            console.log('No more logs to display.');
+            console.log('\x1b[3m\x1b[1m--END OF LOGS--\x1b[0m\n');
             rl.close();
         }
     };
+
+    rl.on('SIGINT', () => {
+        console.log('\x1b[3mExiting...\x1b[0m');
+        rl.close();
+    });
 
     displayLogs();
 }
