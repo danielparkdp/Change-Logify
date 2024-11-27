@@ -4,6 +4,7 @@ const { Command } = require('commander');
 const program = new Command();
 const logify = require("./commands/logify");
 const init = require("./commands/init");
+const revert = require("./commands/revert");
 
 // Default logify behavior
 program
@@ -17,15 +18,25 @@ program
     logify(options);
   });
 
+// Define init
+program
+  .command('init')
+  .description('Initiate logify in repo')
+  .action(() => {
+    init()
+  });
+
 // Revert last change
 program
   .command('revert')
   .description('Revert last changelog')
-  .action(() => {
-    console.log('TODO: Reverting!');
+  .option('-p, --patch <patches...>', 'Specify patches to revert')
+  .action(options => {
+    console.log(options)
+    revert(options);
   });
 
-// Revert last change
+// Edit change
 program
   .command('edit')
   .description('Edit specified changelog')
@@ -41,13 +52,6 @@ program
     console.log('TODO: LOGGING')
   });
 
-// Define init
-program
-  .command('init')
-  .description('Initiate logify in repo')
-  .action(() => {
-    init()
-  });
 
 
 

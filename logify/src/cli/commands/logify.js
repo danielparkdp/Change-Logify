@@ -18,8 +18,6 @@ const logify = async (options) => {
     }
     let gitLogArray = parseGitLog(gitLog)
     
-
-    // TODO: Check compare with logged commits, then check for listed commits, then check for select
     // Get commit history
     let rootDir;
     try {
@@ -51,6 +49,7 @@ const logify = async (options) => {
             seenCommits.add(commit);
         });
     });
+
     // Specified commits only
     if (options.list && options.list.length > 0) {
         gitLogArray = gitLogArray.filter(entry => options.list.includes(entry[0]));
