@@ -57,11 +57,10 @@ program
     log(options)
   });
 
-// Define log
+// Define build
 program
   .command('build')
   .description('Build logify logs into html for public view!')
-  .option('-t, --template <template>', 'Optional path to template html file')
   .option('-d, --destination <destination>', 'Optional path to save built html file')
   .action((options) => {
     build(options)

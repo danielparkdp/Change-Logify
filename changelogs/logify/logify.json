@@ -80,6 +80,14 @@
         "3d24dbd"
       ],
       "log": "Front end enhancement to logify results display\n\n- Implemented a build process to enable the display of results in the front end."
+    },
+    {
+      "version": "v0.1.8",
+      "timestamp": "2024-11-28T07:59:08.757Z",
+      "commits": [
+        "d35bd4c"
+      ],
+      "log": "Logify build includes CSS\n\n- Added CSS styling to the logify build for improved visual presentation."
     }
   ]
 }
