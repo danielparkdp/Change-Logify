@@ -21,15 +21,17 @@ Setup logify in a repo by picking where to store logify files
 Then, generate logs using:
 `logify`
 
-Simple as that! 
+-- Simple as that! --
+
 
 Flags exist for customization (ex. -g for Gemini, -s to select specific commits, etc.)
+Can check cli.js for all options.
 
 `logify log`, `logify revert`, and `logify edit` all do exactly what you might think they do.
 
 `logify build` generates an HTML based on a template (that you can customize if needed)
 
-Once you have the html generated, run:
+**Once you have the html generated, run:**
 `npm start` to demo
 
 
