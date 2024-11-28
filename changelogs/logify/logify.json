@@ -97,6 +97,14 @@
         "a72c6cd"
       ],
       "log": "Update README.md\n\n- Improved documentation for better user understanding.\n- Clarified usage instructions or added examples to enhance functionality comprehension."
+    },
+    {
+      "version": "v0.1.10",
+      "timestamp": "2024-11-28T08:56:23.542Z",
+      "commits": [
+        "bc5e9ca"
+      ],
+      "log": "Fixed issue with default logify config\n\n- Resolved a bug with the default configuration settings for logify.\n- Improved functionality for better user experience with logging features."
     }
   ]
 }
