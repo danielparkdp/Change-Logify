@@ -1,0 +1,36 @@
+{
+  "changelogs": [
+    {
+      "version": "v0.0.1",
+      "timestamp": "2024-11-28T09:13:05.000Z",
+      "commits": [
+        "7c86f69",
+        "ab5009b",
+        "5f9aeeb",
+        "bc5e9ca",
+        "3f789ee",
+        "a72c6cd",
+        "d35bd4c",
+        "3d24dbd",
+        "25e6d0a",
+        "da7b2f7",
+        "7edd177",
+        "5805245",
+        "80490b8",
+        "557cba4",
+        "e3041f4",
+        "4da6abc",
+        "505aff1",
+        "e47dea6",
+        "b956eec",
+        "7f21d8f",
+        "6b43915",
+        "12cefe4",
+        "ea0eb6c",
+        "d21bc16",
+        "0b75b4f"
+      ],
+      "log": "Important User Changes in One-Liner\n\nSignificant updates to the logify functionality, including improved command options, enhanced log editing, and standardized prompts for better performance.\n\n- Updated commander for better CLI functionality.\n- Added new command functionality for logify.\n- Fixed issues with the default logify configuration.\n- Improved handling of edge cases for CLI usage.\n- Implemented edit and patch options for logs.\n- Standardized prompts for improved interaction with the LLM.\n- Enhanced log generation with newly working features.\n- Resolved bugs related to logify initialization."
+    }
+  ]
+}

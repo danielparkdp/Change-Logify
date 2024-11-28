@@ -11,6 +11,7 @@ const build = require("./commands/build");
 
 const validSubCommands = ['init', 'revert', 'edit', 'log', 'build'];
 
+
 // Default logify behavior
 program
   .description('Logify is an AI-powered changelog generation tool!')
