@@ -18,6 +18,7 @@ program
   .option('-o, --openai', 'Use OpenAI Key', false)
   .option('-g, --google', 'Use Google Gemini Key', false)
   .action((options) => {
+    console.log("what")
     logify(options);
   });
 
@@ -69,3 +70,7 @@ program
 
 
 program.parse(process.argv);
+
+if (!process.argv.slice(2).length) {
+    logify({});
+  }
