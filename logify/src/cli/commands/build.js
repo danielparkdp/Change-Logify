@@ -63,6 +63,11 @@ const build = (options) => {
 
     fs.writeFileSync(fullDestinationPath, changelogHtml);
 
+    const logifyCssPath = path.join(fullDestinationDirectories, 'logify.css');
+    if (!fs.existsSync(logifyCssPath)) {
+        fs.copyFileSync(path.join(__dirname, './frontend/logify.css'), logifyCssPath);
+    }
+
     console.log(`\x1b[32mChangelog page successfully generated at ${destinationPath}.\x1b[0m`);
 
     return changelogHtml

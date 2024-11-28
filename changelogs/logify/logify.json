@@ -72,6 +72,14 @@
         "da7b2f7"
       ],
       "log": "New features and updates to logging functionality implemented.\n\n- Added patch option for generating logs.\n- Introduced initial web content for changelogs generation.\n- Updated the logify tool to support edit changes."
+    },
+    {
+      "version": "v0.1.7",
+      "timestamp": "2024-11-28T07:53:29.539Z",
+      "commits": [
+        "3d24dbd"
+      ],
+      "log": "Front end enhancement to logify results display\n\n- Implemented a build process to enable the display of results in the front end."
     }
   ]
 }
