@@ -9,6 +9,8 @@ const edit = require("./commands/edit");
 const log = require("./commands/log");
 const build = require("./commands/build");
 
+
+
 const validSubCommands = ['init', 'revert', 'edit', 'log', 'build'];
 
 // Default logify behavior
