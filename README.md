@@ -28,3 +28,6 @@ Run
 
 Can run with select, specify, etc.
 
+
+`npm start` to demo
+

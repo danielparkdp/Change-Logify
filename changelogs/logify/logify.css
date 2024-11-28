@@ -1,0 +1,92 @@
+/* changelog.css - Dark Midnight Mode */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap');
+
+body {
+    background-color: #010614; /* Dark midnight blue background for the entire page */
+    color: #d1d1d1; /* Light gray text color for the page */
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif; /* Slightly more square font */
+}
+
+.changelog {
+    background-color: #010614; /* Darker blue background for the changelog */
+    border: 1px solid #01040c; /* Dark gray-blue border */
+    border-radius: 8px;
+    padding: 24px;
+    margin: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Dark shadow */
+}
+
+.changelog-entry {
+    border-bottom: 1px solid #2a3b5f; /* Consistent border color */
+    padding: 18px 0;
+    margin-bottom: 40px; /* Increased spacing between logs */
+}
+
+.changelog-entry:last-child {
+    border-bottom: none; /* Remove border for the last entry */
+    margin-bottom: 0; /* No extra margin for the last entry */
+}
+
+.changelog-version {
+    color: #d1d1d1; /* Light gray text color */
+    font-size: 1.6em;
+    margin: 0;
+    font-weight: 600; /* Less bold */
+}
+
+.changelog-timestamp {
+    color: #8a9bb5; /* Softer gray text */
+    font-size: 0.85em;
+    margin-top: 4px;
+    font-weight: 400; /* Normal weight */
+}
+
+.changelog-log {
+    margin-top: 12px;
+}
+
+.changelog-log h3 {
+    margin: 12px 0;
+    color: #f6f1f8; /* Soft purple for headings */
+    font-weight: 600; /* Less bold */
+}
+
+.changelog-title {
+    font-size: 1.2em;
+    font-weight: 600; /* Less bold */
+    color: #d1d1d1; /* Light gray text color */
+    margin-bottom: 10px;
+}
+
+.changelog-log ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+    margin-bottom: 20px; /* Added margin below the unordered list */
+}
+
+.changelog-log li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: #d1d1d1; /* Light gray text color */
+    font-size: 0.95em;
+    font-weight: 400; /* Normal weight */
+}
+
+.changelogs-generated {
+    font-size: 0.8em; /* Smaller font size */
+    color: #9e96ec; /* Indigo color */
+    margin-top: 0; /* Adjust as needed */
+    margin-bottom: 150px;
+}
+
+a {
+    color: #726adb; /* Slightly darker indigo color */
+}
+
+h1 {
+    font-size: 3.5em; /* Increased font size for the main header */
+    margin-bottom: 10px; /* Adjust as needed */
+}

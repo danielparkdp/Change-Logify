@@ -21,7 +21,7 @@ const initiateConfig = () => {
                 output: process.stdout
             });
             let logifyPath;
-            readlinePath.question('Enter path in repo to save logify files (default is root dir): ', (logify_path) => {
+            readlinePath.question('Enter path in repo to save logify files (relative to default root dir): ', (logify_path) => {
                 logifyPath = logify_path.trim() || '';
                 readlinePath.close();
                 resolve(logifyPath)
@@ -63,7 +63,7 @@ const initiateConfig = () => {
 }
 
 const init = async () => {
-    logify_path = await initiateConfig()
+    let logify_path = await initiateConfig()
     if (logify_path === null || logify_path === undefined) {
         return;
     }
@@ -99,7 +99,14 @@ const init = async () => {
         return;
     }
     const logifyConfigPath = path.join(rootDir, '.logify');
-    const logifyConfigContent = `LOGIFY_PATH=${logify_path}`;
+    const buildPath = path.join(logify_path, "logify", "LOGIFY.html")
+    const logifyConfigContent = `LOGIFY_PATH=${logify_path}\nBUILD_PATH=${buildPath}`;
+    try {
+        fs.writeFileSync(path.join(rootDir, buildPath), '');
+    } catch (error) {
+        console.error('\x1b[31mFailed to create the file at the specified build path');
+        return;
+    }
     try {
         fs.writeFileSync(logifyConfigPath, logifyConfigContent);
 

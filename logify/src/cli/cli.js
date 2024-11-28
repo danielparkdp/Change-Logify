@@ -7,6 +7,7 @@ const init = require("./commands/init");
 const revert = require("./commands/revert");
 const edit = require("./commands/edit");
 const log = require("./commands/log");
+const build = require("./commands/build");
 
 // Default logify behavior
 program
@@ -56,6 +57,15 @@ program
     log(options)
   });
 
+// Define log
+program
+  .command('build')
+  .description('Build logify logs into html for public view!')
+  .option('-t, --template <template>', 'Optional path to template html file')
+  .option('-d, --destination <destination>', 'Optional path to save built html file')
+  .action((options) => {
+    build(options)
+  });
 
 
 
